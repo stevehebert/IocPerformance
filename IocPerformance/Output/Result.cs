@@ -3,24 +3,15 @@ namespace IocPerformance.Output
 {
     public class Result
     {
-        public string Name { get; set; }
+        public bool SupportsFunc { get; set; }
 
-        public string Version { get; set; }
+        public bool SupportsLazy { get; set; }
 
-        public long SingletonTime { get; set; }
+        public bool SupportsLazyOfT { get; set; }
 
-        public long TransientTime { get; set; }
+        public bool SupportsIEnumerable { get; set; }
 
-        public long CombinedTime { get; set; }
-
-        public long? InterceptionTime { get; set; }
-
-        public int SingletonInstances { get; set; }
-
-        public int TransientInstances { get; set; }
-
-        public int CombinedInstances { get; set; }
-
-        public int InterceptionInstances { get; set; }
+        public bool SupportsIEnumerableOfLazy { get; set; }
+        public bool SupportsIEnumerableOfLazyOfTOfTMetadata { get; set; }
     }
 }
