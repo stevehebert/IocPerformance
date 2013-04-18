@@ -24,7 +24,7 @@ namespace IocPerformance.Output
                     var result = item();
                     return result != null;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return false;
                 }
@@ -41,7 +41,8 @@ namespace IocPerformance.Output
             Name = name;
             Version = version;
             _containerAdapter = containerAdapter;
-            
+            containerAdapter.Prepare();
+
         }
 
         public static IEnumerable<string> ColumnNames

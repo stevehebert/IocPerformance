@@ -27,15 +27,15 @@ namespace IocPerformance.Output
                 Directory.CreateDirectory("output");
             }
 
-            this.CreateChart(
-                "output\\01-Singleton.png",
-                this.results.AsEnumerable().Reverse().Select(r => new Tuple<string, double>(r.Name, r.SupportsFuncOfT)));
-            this.CreateChart(
-                "output\\02-Transient.png",
-                this.results.AsEnumerable().Reverse().Select(r => new Tuple<string, double>(r.Name, r.TransientTime)));
-            this.CreateChart(
-                "output\\03-Combined.png",
-                this.results.AsEnumerable().Reverse().Select(r => new Tuple<string, double>(r.Name, r.CombinedTime)));
+            //this.CreateChart(
+            //    "output\\01-Singleton.png",
+            //    this.results.AsEnumerable().Reverse().Select(r => new Tuple<string, double>(r.Name, r.SupportsFuncOfT.ToString())));
+            //this.CreateChart(
+            //    "output\\02-Transient.png",
+            //    this.results.AsEnumerable().Reverse().Select(r => new Tuple<string, double>(r.Name, r.TransientTime)));
+            //this.CreateChart(
+            //    "output\\03-Combined.png",
+            //    this.results.AsEnumerable().Reverse().Select(r => new Tuple<string, double>(r.Name, r.CombinedTime)));
 
             // Blog images
             File.Copy("output\\01-Singleton.png", "output\\41fb475d-167c-43e0-83bf-42a051d5ec72.png", true);

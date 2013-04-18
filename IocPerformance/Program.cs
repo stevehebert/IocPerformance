@@ -33,7 +33,7 @@ namespace IocPerformance
                 Tuple.Create<string, IContainerAdapter>("Ninject", new NinjectContainerAdapter()),
                 Tuple.Create<string, IContainerAdapter>("Petite", new PetiteContainerAdapter()),
                 Tuple.Create<string, IContainerAdapter>("SimpleInjector", new SimpleInjectorContainerAdapter()),
-                Tuple.Create<string, IContainerAdapter>("Speedioc", new SpeediocContainerAdapter()),
+                //Tuple.Create<string, IContainerAdapter>("Speedioc", new SpeediocContainerAdapter()),
                 Tuple.Create<string, IContainerAdapter>("Spring.NET", new SpringContainerAdapter()),
                 Tuple.Create<string, IContainerAdapter>("StructureMap", new StructureMapContainerAdapter()),
                 Tuple.Create<string, IContainerAdapter>("TinyIOC", new TinyIOCContainerAdapter()),
@@ -65,7 +65,7 @@ namespace IocPerformance
             Combined.Instances = 0;
             Calculator.Instances = 0;
 
-            container.Dispose();
+            //container.Dispose();
 
             return result;
         }
