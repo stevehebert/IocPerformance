@@ -1,17 +1,70 @@
 ﻿
+using System;
+using System.Collections.Generic;
+using IocPerformance.Adapters;
+
 namespace IocPerformance.Output
 {
     public class Result
     {
-        public bool SupportsFunc { get; set; }
+        private readonly IContainerAdapter _containerAdapter;
+        public string Name { get; private set; }
+        public string Version { get; private set; }
 
-        public bool SupportsLazy { get; set; }
+        public bool SupportsFuncOfT
+        {
+            get {
+                try
+                {
+                    var item = _containerAdapter.Resolve<Func<ITransient>>();
 
-        public bool SupportsLazyOfT { get; set; }
+                    if (item == null)
+                        return false;
 
-        public bool SupportsIEnumerable { get; set; }
+                    var result = item();
+                    return result != null;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
 
-        public bool SupportsIEnumerableOfLazy { get; set; }
-        public bool SupportsIEnumerableOfLazyOfTOfTMetadata { get; set; }
+        public bool SupportsLazyOfT { get; private set; }
+        public bool SupportsLazyOfTOfTMetadata { get; private set; }
+        public bool SupportsIEnumerable { get; private set; }
+        public bool SupportsIEnumerableOfLazyOfTOfTMetadata { get; private set; }
+
+        public Result(IContainerAdapter containerAdapter, string name, string version)
+        {
+            Name = name;
+            Version = version;
+            _containerAdapter = containerAdapter;
+            
+        }
+
+        public static IEnumerable<string> ColumnNames
+        {
+            get
+            {
+                yield return "Func<T>";
+                yield return "Lazy<T>";
+                yield return "Lazy<T,TMetadata>";
+                yield return "IEnumerable<T>";
+                yield return "IEnumerable<Lazy<T,TMetadata>>";
+            }
+        }
+        public IEnumerable<bool?> Results
+        {
+            get
+            {
+                yield return SupportsFuncOfT;
+                yield return SupportsLazyOfT;
+                yield return SupportsLazyOfTOfTMetadata;
+                yield return SupportsIEnumerable;
+                yield return SupportsIEnumerableOfLazyOfTOfTMetadata;
+            }
+        }
     }
 }

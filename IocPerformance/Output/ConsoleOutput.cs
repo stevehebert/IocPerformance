@@ -6,22 +6,22 @@ namespace IocPerformance.Output
     {
         public void Start()
         {
-            Console.WriteLine("Name        \tSingleton\tTransient\tCombined\tInterception\t#.ctor Singleton\t#.ctor Transient\t#.ctor Combined\t#.ctor Interception");
+            Console.Write("Name");
+
+            foreach(var label in Output.Result.ColumnNames)
+                Console.Write("\t{0}", label);
+            
+            Console.WriteLine("");
+
         }
 
         public void Result(Result result)
         {
-            Console.WriteLine(string.Format(
-                "{0}\t{1}\t\t{2}\t\t{3}\t\t{4}\t\t{5}\t\t\t{6}\t\t\t\t{7}\t\t\t\t{8}",
-                result.Name + "             ".Substring(result.Name.Length - 1),
-                result.SingletonTime,
-                result.TransientTime,
-                result.CombinedTime,
-                result.InterceptionTime.HasValue ? result.InterceptionTime.Value.ToString() : string.Empty,
-                result.SingletonInstances,
-                result.TransientInstances,
-                result.CombinedInstances,
-                result.InterceptionInstances));
+            Console.Write("{0}", result.Name);
+            foreach (var value in result.Results)
+                Console.Write("\t{0}\t", value == null ? "n/a" : value.ToString());
+
+            Console.WriteLine();
         }
 
         public void Finish()

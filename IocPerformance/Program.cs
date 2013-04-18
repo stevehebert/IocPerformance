@@ -57,22 +57,8 @@ namespace IocPerformance
 
             WarmUp(container);
 
-            var result = new Result();
-            result.Name = name;
-            result.Version = container.Version;
-            result.SingletonTime = MeasureSingleton(container);
-            result.TransientTime = MeasureTransient(container);
-            result.CombinedTime = MeasureCombined(container);
+            var result = new Result( container, name, container.Version);
 
-            if (container.SupportsInterception)
-            {
-                result.InterceptionTime = MeasureProxy(container);
-            }
-
-            result.SingletonInstances = Singleton.Instances;
-            result.TransientInstances = Transient.Instances;
-            result.CombinedInstances = Combined.Instances;
-            result.InterceptionInstances = Calculator.Instances;
 
             Singleton.Instances = 0;
             Transient.Instances = 0;

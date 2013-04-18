@@ -29,7 +29,7 @@ namespace IocPerformance.Output
 
             this.CreateChart(
                 "output\\01-Singleton.png",
-                this.results.AsEnumerable().Reverse().Select(r => new Tuple<string, double>(r.Name, r.SingletonTime)));
+                this.results.AsEnumerable().Reverse().Select(r => new Tuple<string, double>(r.Name, r.SupportsFuncOfT)));
             this.CreateChart(
                 "output\\02-Transient.png",
                 this.results.AsEnumerable().Reverse().Select(r => new Tuple<string, double>(r.Name, r.TransientTime)));
