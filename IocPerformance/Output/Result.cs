@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using IocPerformance.Adapters;
 using IocPerformance.TargetTypes;
 
@@ -51,7 +52,23 @@ namespace IocPerformance.Output
             }
         }
         public bool SupportsLazyOfTOfTMetadata { get; private set; }
-        public bool SupportsIEnumerable { get; private set; }
+        public bool SupportsIEnumerable { get {
+            try
+            {
+                var items = _containerAdapter.Resolve<IEnumerable<ISet>>();
+                if (items == null)
+                    return false;
+                if (items.Count() != 2)
+                    return false;
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        }
         public bool SupportsIEnumerableOfLazyOfTOfTMetadata { get; private set; }
 
         public Result(IContainerAdapter containerAdapter, string name, string version)

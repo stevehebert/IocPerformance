@@ -7,7 +7,7 @@ namespace IocPerformance.Adapters
 {
     public sealed class MugenContainerAdapter : IContainerAdapter
     {
-        private MugenInjector container;
+        private MugenInjector _container;
 
         public string Version
         {
@@ -22,31 +22,36 @@ namespace IocPerformance.Adapters
             }
         }
 
-        public bool SupportsInterception { get { return false; } }
+        public bool SupportsInterception
+        {
+            get { return false; }
+        }
 
         public void Prepare()
         {
-            this.container = new MugenInjector();
+            _container = new MugenInjector();
 
-            this.container.Bind<ISingleton>().To<Singleton>().InSingletonScope();
-            this.container.Bind<ITransient>().To<Transient>().InTransientScope();
-            this.container.Bind<ICombined>().To<Combined>().InTransientScope();
+            _container.Bind<ISingleton>().To<Singleton>().InSingletonScope();
+            _container.Bind<ITransient>().To<Transient>().InTransientScope();
+            _container.Bind<ICombined>().To<Combined>().InTransientScope();
+            _container.Bind<ISet>().To<First>().InTransientScope();
+            _container.Bind<ISet>().To<Second>().InTransientScope();
         }
 
         public T Resolve<T>() where T : class
         {
-            return this.container.Get<T>();
+            return _container.Get<T>();
         }
 
         public T ResolveProxy<T>() where T : class
         {
-            return this.container.Get<T>();
+            return _container.Get<T>();
         }
 
         public void Dispose()
         {
             // Allow the container and everything it references to be disposed.
-            this.container = null;
+            _container = null;
         }
     }
 }

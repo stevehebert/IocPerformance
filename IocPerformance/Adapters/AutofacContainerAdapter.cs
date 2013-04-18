@@ -45,6 +45,9 @@ namespace IocPerformance.Adapters
             autofacContainerBuilder.RegisterType<Calculator>()
                     .As<ICalculator>()
                     .EnableInterfaceInterceptors();
+
+            autofacContainerBuilder.RegisterType<First>().As<ISet>();
+            autofacContainerBuilder.RegisterType<Second>().As<ISet>();
             
             this.container = autofacContainerBuilder.Build();
         }

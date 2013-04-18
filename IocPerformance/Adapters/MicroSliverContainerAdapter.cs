@@ -7,7 +7,7 @@ namespace IocPerformance.Adapters
 {
     public sealed class MicroSliverContainerAdapter : IContainerAdapter
     {
-        private IoC container;
+        private IoC _container;
 
         public string Version
         {
@@ -26,26 +26,30 @@ namespace IocPerformance.Adapters
 
         public void Prepare()
         {
-            this.container = new IoC();
-            this.container.Map<ISingleton, Singleton>().ToSingletonScope();
-            this.container.Map<ITransient, Transient>();
-            this.container.Map<ICombined, Combined>();
+            _container = new IoC();
+            _container.Map<ISingleton, Singleton>().ToSingletonScope();
+            _container.Map<ITransient, Transient>();
+            _container.Map<ICombined, Combined>();
+            // MicroSliver does not allow for multiple registrations at all
+            //_container.Map<ISet, First>();
+            //_container.Map<ISet, Second>();
+
         }
 
         public T Resolve<T>() where T : class
         {
-            return this.container.Get<T>();
+            return _container.Get<T>();
         }
 
         public T ResolveProxy<T>() where T : class
         {
-            return this.container.Get<T>();
+            return _container.Get<T>();
         }
 
         public void Dispose()
         {
             // Allow the container and everything it references to be disposed.
-            this.container = null;
+            _container = null;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace IocPerformance.Adapters
 {
     public sealed class UnityContainerAdapter : IContainerAdapter
     {
-        private UnityContainer container;
+        private UnityContainer _container;
 
         public string Version
         {
@@ -23,35 +23,41 @@ namespace IocPerformance.Adapters
             }
         }
 
-        public bool SupportsInterception { get { return true; } }
+        public bool SupportsInterception
+        {
+            get { return true; }
+        }
 
         public void Prepare()
         {
-            this.container = new UnityContainer();
-            this.container.AddNewExtension<Microsoft.Practices.Unity.InterceptionExtension.Interception>();
+            _container = new UnityContainer();
+            _container.AddNewExtension<Microsoft.Practices.Unity.InterceptionExtension.Interception>();
 
-            this.container.RegisterType<ISingleton, Singleton>(new ContainerControlledLifetimeManager());
-            this.container.RegisterType<ITransient, Transient>(new TransientLifetimeManager());
-            this.container.RegisterType<ICombined, Combined>(new TransientLifetimeManager());
-            this.container.RegisterType<ICalculator, Calculator>(new TransientLifetimeManager())
-              .Configure<Microsoft.Practices.Unity.InterceptionExtension.Interception>()
-              .SetInterceptorFor<ICalculator>(new InterfaceInterceptor());
+            _container.RegisterType<ISingleton, Singleton>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<ITransient, Transient>(new TransientLifetimeManager());
+            _container.RegisterType<ICombined, Combined>(new TransientLifetimeManager());
+            _container.RegisterType<ICalculator, Calculator>(new TransientLifetimeManager())
+                     .Configure<Microsoft.Practices.Unity.InterceptionExtension.Interception>()
+                     .SetInterceptorFor<ICalculator>(new InterfaceInterceptor());
+
+            _container.RegisterType<ISet, First>(new TransientLifetimeManager());
+            _container.RegisterType<ISet, Second>(new TransientLifetimeManager());
         }
 
         public T Resolve<T>() where T : class
         {
-            return this.container.Resolve<T>();
+            return _container.Resolve<T>();
         }
 
         public T ResolveProxy<T>() where T : class
         {
-            return this.container.Resolve<T>();
+            return _container.Resolve<T>();
         }
 
         public void Dispose()
         {
             // Allow the container and everything it references to be disposed.
-            this.container = null;
+            _container = null;
         }
     }
 }

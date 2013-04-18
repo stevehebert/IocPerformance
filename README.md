@@ -12,7 +12,7 @@ Results
 -------
 <table>
 <tr><th>Func<T></th><th>Lazy<T></th><th>Lazy<T,TMetadata></th><th>IEnumerable<T></th><th>IEnumerable<Lazy<T,TMetadata>></th></tr><tr><th>{0}</th></tr><td>False</td><td>False</td><td>False</td><td>False</td><td>False</td></tr>
-<tr><th>{0}</th></tr><td>True</td><td>True</td><td>False</td><td>False</td><td>False</td></tr>
+<tr><th>{0}</th></tr><td>True</td><td>True</td><td>False</td><td>True</td><td>False</td></tr>
 <tr><th>{0}</th></tr><td>True</td><td>False</td><td>False</td><td>False</td><td>False</td></tr>
 <tr><th>{0}</th></tr><td>False</td><td>False</td><td>False</td><td>False</td><td>False</td></tr>
 <tr><th>{0}</th></tr><td>False</td><td>False</td><td>False</td><td>False</td><td>False</td></tr>
@@ -24,7 +24,7 @@ Results
 <tr><th>{0}</th></tr><td>False</td><td>False</td><td>False</td><td>False</td><td>False</td></tr>
 <tr><th>{0}</th></tr><td>False</td><td>False</td><td>False</td><td>False</td><td>False</td></tr>
 <tr><th>{0}</th></tr><td>False</td><td>False</td><td>False</td><td>False</td><td>False</td></tr>
-<tr><th>{0}</th></tr><td>True</td><td>True</td><td>False</td><td>False</td><td>False</td></tr>
+<tr><th>{0}</th></tr><td>True</td><td>True</td><td>False</td><td>True</td><td>False</td></tr>
 <tr><th>{0}</th></tr><td>False</td><td>False</td><td>False</td><td>False</td><td>False</td></tr>
 <tr><th>{0}</th></tr><td>False</td><td>False</td><td>False</td><td>False</td><td>False</td></tr>
 <tr><th>{0}</th></tr><td>False</td><td>False</td><td>False</td><td>False</td><td>False</td></tr>
