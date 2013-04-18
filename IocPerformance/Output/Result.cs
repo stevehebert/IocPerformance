@@ -31,7 +31,24 @@ namespace IocPerformance.Output
             }
         }
 
-        public bool SupportsLazyOfT { get; private set; }
+        public bool SupportsLazyOfT {
+            get
+            {
+
+                try
+                {
+                    var item = _containerAdapter.Resolve<Lazy<ITransient>>();
+                    if (item == null)
+                        return false;
+                    var result = item.Value;
+                    return result != null;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
         public bool SupportsLazyOfTOfTMetadata { get; private set; }
         public bool SupportsIEnumerable { get; private set; }
         public bool SupportsIEnumerableOfLazyOfTOfTMetadata { get; private set; }
