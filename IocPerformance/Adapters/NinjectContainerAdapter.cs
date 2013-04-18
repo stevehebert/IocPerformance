@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Xml.Linq;
+using IocPerformance.TargetTypes;
 using Ninject;
 
 namespace IocPerformance.Adapters

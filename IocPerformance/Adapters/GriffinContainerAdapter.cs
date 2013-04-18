@@ -2,6 +2,7 @@
 using System.Xml.Linq;
 using Griffin.Container;
 using IocPerformance.Interception;
+using IocPerformance.TargetTypes;
 
 namespace IocPerformance.Adapters
 {

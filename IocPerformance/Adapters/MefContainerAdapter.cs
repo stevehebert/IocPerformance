@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Composition.Hosting;
+using IocPerformance.TargetTypes;
 
 namespace IocPerformance.Adapters
 {

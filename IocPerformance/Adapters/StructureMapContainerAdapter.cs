@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Xml.Linq;
 using IocPerformance.Interception;
+using IocPerformance.TargetTypes;
 using StructureMap;
 
 namespace IocPerformance.Adapters

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using IocPerformance.Adapters;
 using IocPerformance.Output;
+using IocPerformance.TargetTypes;
 
 namespace IocPerformance
 {

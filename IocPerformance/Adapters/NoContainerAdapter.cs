@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using IocPerformance.Interception;
+using IocPerformance.TargetTypes;
 
 namespace IocPerformance.Adapters
 {

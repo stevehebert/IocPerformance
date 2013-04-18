@@ -186,7 +186,7 @@
     <Compile Include="Caliburn.Micro\ContainerExtensions.cs" />
     <Compile Include="Caliburn.Micro\ExtensionMethods.cs" />
     <Compile Include="Caliburn.Micro\SimpleContainer.cs" />
-    <Compile Include="Classes.cs" />
+    <Compile Include="TargetTypes\Calculator.cs" />
     <Compile Include="Interception\AutofacInterceptionLogger.cs" />
     <Compile Include="Interception\SpringInterceptionLogger.cs" />
     <Compile Include="Interception\StructureMapInterceptionLogger.cs" />
@@ -209,6 +209,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceContainer.cs" />
+    <Compile Include="TargetTypes\Combined.cs" />
+    <Compile Include="TargetTypes\ICalculator.cs" />
+    <Compile Include="TargetTypes\ICombined.cs" />
+    <Compile Include="TargetTypes\ISingleton.cs" />
+    <Compile Include="TargetTypes\ITransient.cs" />
+    <Compile Include="TargetTypes\Singleton.cs" />
+    <Compile Include="TargetTypes\Transient.cs" />
     <Compile Include="TinyIoC.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,7 @@ using System.Xml.Linq;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using IocPerformance.Interception;
+using IocPerformance.TargetTypes;
 
 namespace IocPerformance.Adapters
 {

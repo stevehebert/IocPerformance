@@ -2,6 +2,7 @@
 using System.Xml.Linq;
 using Hiro;
 using Hiro.Containers;
+using IocPerformance.TargetTypes;
 
 namespace IocPerformance.Adapters
 {

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Xml.Linq;
 using Caliburn.Micro;
+using IocPerformance.TargetTypes;
 
 namespace IocPerformance.Adapters
 {

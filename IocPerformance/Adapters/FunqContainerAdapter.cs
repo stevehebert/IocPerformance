@@ -1,4 +1,5 @@
 ﻿using Funq;
+using IocPerformance.TargetTypes;
 
 namespace IocPerformance.Adapters
 {
